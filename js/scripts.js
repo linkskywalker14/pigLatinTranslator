@@ -2,19 +2,40 @@
 
 
 /*
+
+const vowel = ["A", "E", "I", "O", "U", "a", "e", "i", "o", "u"];
+
+function consonant(word){
+  reorder = word.split("");
+  for (i = 0; i < reorder.length; i+=1) {
+    if (vowel.includes(reorder[0])){
+      reorder.push("ay");
+      break;
+    } else {
+      const x = reorder.shift();
+      reorder.push(x);
+    }
+  }
+  return reorder.join("");
+}
+
+
 const string = "Hello everyone, my name is David, and I am from Alaska. Under what circumstances does the moon orbit the earth?"
 const array = string.split(" ");
-const vowel = ["A", "E", "I", "O", "U", "a", "e", "i", "o", "u"]
 let newArray = [];
 
 array.forEach(function(word){
-	if (word.slice(0,1) === "A"){
+	if (vowel.includes(word.slice(0,1))){
     pigged = word.concat("way");
     newArray.push(pigged);
   } else {
-  newArray.push(word);
+    const reorder = consonant(word);
+    newArray.push(reorder);
   }
 });
+
+const final = newArray.join(" ");
+console.log(final);
 
 */
 
