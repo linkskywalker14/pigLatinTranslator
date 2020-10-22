@@ -9,10 +9,10 @@ const vowel = ["A", "E", "I", "O", "U", "a", "e", "i", "o", "u"];
 const sometimes = ["A", "E", "I", "O", "U","Y", "a", "e", "i", "o", "u","y"];
 const symbols = [".", ",", "!", "?", ":", ";"]
 
-//Takes words that begin with a consonant, moves the first syllable to the end and adds "ay."
+//The consonant function takes words that begin with a consonant, moves the first syllables to the end and adds "ay."
 
 function consonant(word){
-  reorder = word.split("");
+  let reorder = word.split("");
   for (i = 0; i < reorder.length; i+=1) {
     if (sometimes.includes(reorder[0])){
       reorder.push("ay");
@@ -25,11 +25,11 @@ function consonant(word){
   return reorder.join("");
 }
 
-//Keeps punctuation at the ends of words, regardless of how letters are shifted.
+//The punctuation function moves end-of-word punctuation back to the end after all letter shuffling is complete.
 
 function punctuation(word){
-  reorder = word.split("");
-  x = reorder.length;
+  let reorder = word.split("");
+  const x = reorder.length;
   for (i = 0; i < x; i+=1) {
     if (symbols.includes(reorder[i])){
       reorder.push(reorder[i]);
@@ -39,10 +39,10 @@ function punctuation(word){
   return reorder.join("");
 }
 
-//If a word was capitalized, the new first letter remains capitalized.
+//The capitalization function checks to see if a word was capitalized, and re-capitalizes the new first letter.
 
 function capitalization(word){
-  reorder = word.split("");
+  let reorder = word.split("");
   for (i = 0; i < reorder.length; i+=1) {
     if (reorder[i] === reorder[i].toUpperCase() && reorder[i].toUpperCase() !== reorder[i].toLowerCase()){
       reorder[i] = reorder[i].toLowerCase();
@@ -52,27 +52,31 @@ function capitalization(word){
   return reorder.join("");
 }
 
+//
+
+function check(word){
+  word = punctuation(word);
+  word = capitalization(word);
+  pigged.push(word);
+}
+
 //Core of the thing.
 
-const string = "Hello everyone, my name is David, and I am from Alaska. Under what circumstances does the moon orbit the earth?";
-const array = string.split(" ");
-let newArray = [];
+const input = "Hello everyone, my name is David, and I am from Alaska. QUESTION: Under what circumstances does the moon orbit the earth?";
+const array = input.split(" ");
+let pigged = [];
 
 array.forEach(function(word){
 	if (vowel.includes(word.slice(0,1))){
     let pigged = word.concat("way");
-    pigged = punctuation(pigged);
-    pigged = capitalization(pigged);
-    newArray.push(pigged);
+    check(pigged);
   } else {
-    let reorder = consonant(word);
-    reorder = punctuation(reorder);
-    reorder = capitalization(reorder);
-    newArray.push(reorder);
+    let pigged = consonant(word);
+    check(pigged);
   }
 });
 
-const final = newArray.join(" ");
+const final = pigged.join(" ");
 
 /*
 //2.RegEx Business Logic
@@ -100,7 +104,7 @@ newString = 'Always horrible you know, everyone is out to get ultimate power!'.r
 
 
 
-// User Interface Logic
+//3.UI Logic
 
 $(document).ready(function() {
   $("form#run").submit(function(event) {
