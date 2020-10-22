@@ -39,6 +39,19 @@ function punctuation(word){
   return reorder.join("");
 }
 
+//If a word was capitalized, the new first letter remains capitalized.
+
+function capitalization(word){
+  reorder = word.split("");
+  for (i = 0; i < reorder.length; i+=1) {
+    if (reorder[i] === reorder[i].toUpperCase()){
+      reorder[i] = reorder[i].toLowerCase();
+      reorder[0] = reorder[0].toUpperCase();
+    }
+  }
+  return reorder.join("");
+}
+
 //Core of the thing.
 
 const string = "Hello everyone, my name is David, and I am from Alaska. Under what circumstances does the moon orbit the earth?";
@@ -49,10 +62,12 @@ array.forEach(function(word){
 	if (vowel.includes(word.slice(0,1))){
     let pigged = word.concat("way");
     pigged = punctuation(pigged);
+    pigged = capitalization(pigged);
     newArray.push(pigged);
   } else {
     let reorder = consonant(word);
     reorder = punctuation(reorder);
+    reorder = capitalization(reorder);
     newArray.push(reorder);
   }
 });
