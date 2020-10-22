@@ -7,6 +7,9 @@
 
 const vowel = ["A", "E", "I", "O", "U", "a", "e", "i", "o", "u"];
 const sometimes = ["A", "E", "I", "O", "U","Y", "a", "e", "i", "o", "u","y"];
+const symbols = [".", ",", "!", "?", ":", ";"]
+
+//Takes words that begin with a consonant, moves the first syllable to the end and adds "ay."
 
 function consonant(word){
   reorder = word.split("");
@@ -22,16 +25,34 @@ function consonant(word){
   return reorder.join("");
 }
 
-const string = "Hello everyone, my name is David, and I am from Alaska. Under what circumstances does the moon orbit the earth?"
+//Keeps punctuation at the ends of words, regardless of how letters are shifted.
+
+function punctuation(word){
+  reorder = word.split("");
+  x = reorder.length;
+  for (i = 0; i < x; i+=1) {
+    if (symbols.includes(reorder[i])){
+      reorder.push(reorder[i]);
+      delete reorder[i];
+    }
+  }
+  return reorder.join("");
+}
+
+//Core of the thing.
+
+const string = "Hello everyone, my name is David, and I am from Alaska. Under what circumstances does the moon orbit the earth?";
 const array = string.split(" ");
 let newArray = [];
 
 array.forEach(function(word){
 	if (vowel.includes(word.slice(0,1))){
-    pigged = word.concat("way");
+    let pigged = word.concat("way");
+    pigged = punctuation(pigged);
     newArray.push(pigged);
   } else {
-    const reorder = consonant(word);
+    let reorder = consonant(word);
+    reorder = punctuation(reorder);
     newArray.push(reorder);
   }
 });
