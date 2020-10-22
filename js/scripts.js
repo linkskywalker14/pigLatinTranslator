@@ -44,7 +44,7 @@ function punctuation(word){
 function capitalization(word){
   reorder = word.split("");
   for (i = 0; i < reorder.length; i+=1) {
-    if (reorder[i] === reorder[i].toUpperCase()){
+    if (reorder[i] === reorder[i].toUpperCase() && reorder[i].toUpperCase() !== reorder[i].toLowerCase()){
       reorder[i] = reorder[i].toLowerCase();
       reorder[0] = reorder[0].toUpperCase();
     }
