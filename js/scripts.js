@@ -1,7 +1,9 @@
-//Loops
+//INDEX
+//1.Loop Business Logic
+//2.RegEx Business Logic
+//3.UI Logic
 
-
-/*
+//1.Loop Business Logic
 
 const vowel = ["A", "E", "I", "O", "U", "a", "e", "i", "o", "u"];
 
@@ -19,7 +21,6 @@ function consonant(word){
   return reorder.join("");
 }
 
-
 const string = "Hello everyone, my name is David, and I am from Alaska. Under what circumstances does the moon orbit the earth?"
 const array = string.split(" ");
 let newArray = [];
@@ -35,19 +36,13 @@ array.forEach(function(word){
 });
 
 const final = newArray.join(" ");
-console.log(final);
 
-*/
-
-
-
-
-
-//Regular Expression
+/*
+//2.RegEx Business Logic
 
 //Taking a break from this. Not working yet. Below is the closest I got. It successfully identifies words that start with vowels...not sure how to cause that to append something to the end...
 
-//pigString = vowelString.replace(/\b[aeiou]/gi, "XXX");
+pigString = vowelString.replace(/\b[aeiou]/gi, "XXX");
 
 
 //This doesn't work either, but feels maybe closer? After I get this first bit working I could add additional () statements, and p2, p3 actions.
@@ -58,8 +53,26 @@ console.log(final);
 // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_Expressions 
 
 
-//function piggify(p1){
-//  return [p1].concat('way');
-//}
+function piggify(p1){
+  return [p1].concat('way');
+}
 
-//newString = 'Always horrible you know, everyone is out to get ultimate power!'.replace(/(\b[aeiou])/gi, piggify);
+newString = 'Always horrible you know, everyone is out to get ultimate power!'.replace(/(\b[aeiou])/gi, piggify);
+
+*/
+
+
+
+// User Interface Logic
+
+$(document).ready(function() {
+  $("form#run").submit(function(event) {
+    event.preventDefault();
+    $("#piggyResult").show();
+    $("#piggyResult").append(final);
+  });
+});
+  
+
+
+
