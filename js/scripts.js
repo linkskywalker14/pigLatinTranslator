@@ -6,11 +6,12 @@
 //1.Loop Business Logic
 
 const vowel = ["A", "E", "I", "O", "U", "a", "e", "i", "o", "u"];
+const sometimes = ["A", "E", "I", "O", "U","Y", "a", "e", "i", "o", "u","y"];
 
 function consonant(word){
   reorder = word.split("");
   for (i = 0; i < reorder.length; i+=1) {
-    if (vowel.includes(reorder[0])){
+    if (sometimes.includes(reorder[0])){
       reorder.push("ay");
       break;
     } else {
