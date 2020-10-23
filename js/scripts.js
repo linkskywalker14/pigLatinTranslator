@@ -14,9 +14,13 @@ const symbols = [".", ",", "!", "?", ":", ";"]
 function consonant(word){
   let reorder = word.split("");
   for (i = 0; i < reorder.length; i+=1) {
-    if (sometimes.includes(reorder[0])){
+    if (sometimes.includes(reorder[0])) {
       reorder.push("ay");
       break;
+    } else if (reorder[0].toLowerCase() === "q" && reorder[1].toLowerCase() === "u") {
+      reorder.shift();
+      reorder.shift();
+      reorder.push("qu");
     } else {
       const x = reorder.shift();
       reorder.push(x);
