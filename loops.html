@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en-US">
 <head>
-  <title>Pig Latin translated by Loops</title>
+  <title>Pig Latin translated without Regular Expressions</title>
   <link href="css/bootstrap.css" rel="stylesheet" type="text/css">
   <link href="css/styles.css" rel="stylesheet" type="text/css">
   <script src="js/jquery-3.5.1.js"></script>
@@ -9,17 +9,49 @@
   <meta charset="utf-8"/>
 </head>
 <body>
-  <h1>Pig Latin via Loops</h1>
+  <h1>Pig Latin</h1>
+  <h4>without Regular Expressions</h4>
+  <div id="piggyIntro">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-2"></div>
+        <div class="col-lg-6">
+          <br />
+          <p>Ave, barbarian, I am Gaius Porkus! You must have heard of me. Unlike many of my countryboars, I take pity on poor barbarians such as yourself who were raised to speak boorish low languages, and thus lack knowledge of proper and refined pig latin. Presumably you've come to me because you have business to conduct in the eternal city of Omeray, and do not wish to be mocked for your rustic dialect. So please, tell me what you'd like to say in our noble tongue, and I will instruct you on the particulars.</p>
+          <p>On this web page, we will do so without relying on Regular Expressions.</p>
+          <form id="run">
+            <input id="toBePigged" class="form-control" type="text">
+            <button type="submit" class="btn">Make it Piggy!</button>
+          </form>
+        </div>
+        <div class="col-lg-4">
+          <img src="img/GaiusPorkus.png" />
+        </div>
+        <div class="col-lg-2"></div>
+      </div>
+    </div>
+  </div>  
 
-  <p>Currently, the sentence being pig-latined is hard coded as</br><strong>"Hello everyone, my name is David, and I am from Alaska. Under what circumstances does the moon orbit the earth?"</strong><br />Eventually there will be a field here where you can input any sentence you like.</p>
+  <div id="piggyResult">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-1"></div>
+        <div class="col-lg-3">
+          <img src="img/GaiusPorkus.png" />
+        </div>
+        <div class="col-lg-7">
+          <br />
+          <p>Ah, haha, your barbarian notions are so quaint! Well, if you wish to communicate this to a properly civilized person, you must say:</p>
+          <div class="translation">
+            <p><em>"<span id="piggyWords"></span>"</em></p>
+          </div>
+          <a href id="again" class="btn" src="loops.html">Please Gaius Porkus, pray translate one more thing?</a>
+        </div>
+        <div class="col-lg-3"></div>
+      </div>
+    </div>
+  </div>
 
-  <form id="run">
-    <button type="submit">Make it Piggy!</button>
-  </form>
-  <span id="piggyResult">
-    <strong>In pig latin, this sentence would be...</strong><br />
-  </span>
-
-  <p><a href="index.html">Home</a>  |  <a href="regex.html">Switch to Regex</a></p>
+  <p class="navigation"><a href="index.html">Home</a>  |  <a href="regex.html">Switch to Regex</a></p>
 </body>
 </html>

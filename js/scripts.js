@@ -46,23 +46,27 @@ function puncCap(word){
   return reorder.join("");
 }
 
-//Core of the thing.
+//The pigLatin function breaks the input down into individual words, sorts them according to whether they start with a vowel or a consonant, translates them to pig latin, then puts the input back together to return it.
 
-const input = "Hello everyone, my name is David, and I am from Alaska. QUESTION: Under what circumstances does the moon orbit the earth?";
-const array = input.split(" ");
-let pigArray = [];
+function pigLatin(input) {
+  const array = input.split(" ");
+  let pigArray = [];
+  array.forEach(function(word){
+  	if (vowel.includes(word.slice(0,1))){
+      let pigged = word.concat("way");
+      pigArray.push(puncCap(pigged));
+    } else {
+      let pigged = consonant(word);
+      pigArray.push(puncCap(pigged));
+    }
+  });
+  return pigArray.join(" ");
+}
 
-array.forEach(function(word){
-	if (vowel.includes(word.slice(0,1))){
-    let pigged = word.concat("way");
-    pigArray.push(puncCap(pigged));
-  } else {
-    let pigged = consonant(word);
-    pigArray.push(puncCap(pigged));
-  }
-});
 
-const final = pigArray.join(" ");
+
+
+
 
 /*
 //2.RegEx Business Logic
@@ -95,8 +99,10 @@ newString = 'Always horrible you know, everyone is out to get ultimate power!'.r
 $(document).ready(function() {
   $("form#run").submit(function(event) {
     event.preventDefault();
+    const input = $("input#toBePigged").val();
+    $("#piggyIntro").hide();
     $("#piggyResult").show();
-    $("#piggyResult").append(final);
+    $("#piggyWords").append(pigLatin(input));
   });
 });
   
