@@ -29,26 +29,16 @@ function consonant(word){
   return reorder.join("");
 }
 
-//The punctuation function moves end-of-word punctuation back to the end after all letter shuffling is complete.
+//The puncCap function moves end-of-word punctuation where it belongs after all letter shuffling is complete, and checks to see if the word was capitalized, then re-capitalizes the new first letter.
 
-function punctuation(word){
+function puncCap(word){
   let reorder = word.split("");
   const x = reorder.length;
   for (i = 0; i < x; i+=1) {
     if (symbols.includes(reorder[i])){
       reorder.push(reorder[i]);
       delete reorder[i];
-    }
-  }
-  return reorder.join("");
-}
-
-//The capitalization function checks to see if a word was capitalized, and re-capitalizes the new first letter.
-
-function capitalization(word){
-  let reorder = word.split("");
-  for (i = 0; i < reorder.length; i+=1) {
-    if (reorder[i] === reorder[i].toUpperCase() && reorder[i].toUpperCase() !== reorder[i].toLowerCase()){
+    } else if (reorder[i] === reorder[i].toUpperCase()){
       reorder[i] = reorder[i].toLowerCase();
       reorder[0] = reorder[0].toUpperCase();
     }
@@ -56,31 +46,23 @@ function capitalization(word){
   return reorder.join("");
 }
 
-//
-
-function check(word){
-  word = punctuation(word);
-  word = capitalization(word);
-  pigged.push(word);
-}
-
 //Core of the thing.
 
 const input = "Hello everyone, my name is David, and I am from Alaska. QUESTION: Under what circumstances does the moon orbit the earth?";
 const array = input.split(" ");
-let pigged = [];
+let pigArray = [];
 
 array.forEach(function(word){
 	if (vowel.includes(word.slice(0,1))){
     let pigged = word.concat("way");
-    check(pigged);
+    pigArray.push(puncCap(pigged));
   } else {
     let pigged = consonant(word);
-    check(pigged);
+    pigArray.push(puncCap(pigged));
   }
 });
 
-const final = pigged.join(" ");
+const final = pigArray.join(" ");
 
 /*
 //2.RegEx Business Logic
