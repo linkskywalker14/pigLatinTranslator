@@ -1,5 +1,6 @@
 //INDEX
-//Pig Latin without Regular Expressions
+//Pig Latin using Regular Expressions
+
 //1.Global Variables
 //2.Consonant Function
 //3.PuncCap Function
@@ -90,3 +91,28 @@ $(document).ready(function() {
     $("#piggyWords").append(pigLatin(input));
   });
 });
+
+
+/*
+//2.RegEx Business Logic
+
+//Taking a break from this. Not working yet. Below is the closest I got. It successfully identifies words that start with vowels...not sure how to cause that to append something to the end...
+
+pigString = vowelString.replace(/\b[aeiou]/gi, "XXX");
+
+
+//This doesn't work either, but feels maybe closer? After I get this first bit working I could add additional () statements, and p2, p3 actions.
+
+//Reference
+// https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/replace
+// https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_Expressions/Cheatsheet
+// https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_Expressions 
+
+
+function piggify(p1){
+  return [p1].concat('way');
+}
+
+newString = 'Always horrible you know, everyone is out to get ultimate power!'.replace(/(\b[aeiou])/gi, piggify);
+
+*/

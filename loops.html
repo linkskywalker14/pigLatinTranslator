@@ -11,14 +11,21 @@
 <body>
   <h1>Pig Latin</h1>
   <h4>without Regular Expressions</h4>
+
+  <!--Below is the page as it appears when first loaded, including the field where text to be translated is entered.-->
+
   <div id="piggyIntro">
     <div class="container">
       <div class="row">
         <div class="col-lg-2"></div>
         <div class="col-lg-6">
           <br />
-          <p>Ave, barbarian, I am Gaius Porkus! You must have heard of me. Unlike many of my countryboars, I take pity on poor barbarians such as yourself who were raised to speak boorish low languages, and thus lack knowledge of proper and refined pig latin. Presumably you've come to me because you have business to conduct in the eternal city of Omeray, and do not wish to be mocked for your rustic dialect. So please, tell me what you'd like to say in our noble tongue, and I will instruct you on the particulars.</p>
-          <p>On this web page, we will do so without relying on Regular Expressions.</p>
+          <p>
+			      Ave, barbarian, I am Gaius Porkus! You must have heard of me. Unlike many of my countryboars, I take pity on poor barbarians such as yourself who were raised with uncouth tongues, and thus lack knowledge of proper and refined pig latin. Presumably you've come to me because you have business to conduct in the eternal city of Omeray, and do not wish to be mocked for your rustic dialect. So please, tell me what you'd like to say in our noble tongue, and I will instruct you on the particulars.
+          </p>
+          <p>
+            On this web page, we will do so without relying on Regular Expressions.
+          </p>
           <form id="run">
             <input id="toBePigged" class="form-control" type="text">
             <button type="submit" class="btn">Make it Piggy!</button>
@@ -31,6 +38,8 @@
       </div>
     </div>
   </div>  
+
+  <!--Below is the page as it appears after the form is submitted, including the translated text.-->
 
   <div id="piggyResult">
     <div class="container">
@@ -45,12 +54,14 @@
           <div class="translation">
             <p><em>"<span id="piggyWords"></span>"</em></p>
           </div>
-          <a href id="again" class="btn" src="loops.html">Please Gaius Porkus, pray translate one more thing?</a>
+            <a href="loops.html" class="btn">Please Gaius Porkus, pray translate one more thing?</a>
         </div>
         <div class="col-lg-3"></div>
       </div>
     </div>
   </div>
+
+<!--Below is site navigation.-->
 
   <p class="navigation"><a href="index.html">Home</a>  |  <a href="regex.html">Switch to Regex</a></p>
 </body>
