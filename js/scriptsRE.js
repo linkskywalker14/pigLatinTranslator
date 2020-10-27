@@ -17,8 +17,20 @@ let quote = false;
 //2.Consonant Function
 //Takes words that begin with a consonant, moves the first syllables to the end, and adds "ay."
 
+function consonant(word) {
+	return word.replace(/\b([^aeiou]+)([aeiou].*)$/i, "$2$1ay");
+}
+
+/*
+THE ABOVE STILL NEEDS TO CONSIDER Y and QU
+
 function consonant(word){
+
   let reorder = word.split("");
+  if (sometimes.includes(reorder[0])){
+    let x = reorder.shift();
+    reorder.push(x);
+  }
   for (i = 0; i < reorder.length; i+=1) {
     if (sometimes.includes(reorder[0])) {
       reorder.push("ay");
@@ -27,13 +39,11 @@ function consonant(word){
       reorder.shift();
       reorder.shift();
       reorder.push("qu");
-    } else {
-      const x = reorder.shift();
-      reorder.push(x);
     }
   }
   return reorder.join("");
-}
+
+}  */
 
 //3.PuncCap Function
 //Moves end-of-word punctuation where it belongs after all letter shuffling is complete, and checks to see if the word was capitalized, then re-capitalizes the new first letter.
@@ -45,7 +55,7 @@ function puncCap(word){
     if (symbols.includes(reorder[i])){
       reorder.push(reorder[i]);
       delete reorder[i];
-    } else if (reorder[i] === reorder[i].toUpperCase()){
+    } else if (reorder[i] === reorder[i].toUpperCase() && reorder[i] !== "\'"){
       reorder[i] = reorder[i].toLowerCase();
       reorder[0] = reorder[0].toUpperCase();
     } 
@@ -69,12 +79,12 @@ function pigLatin(input) {
       quote = true;
       word = word.substring(1);
     }
-  	if (word.match(/\b[aeiou]/gi)){
-      let pigged = word.concat("way");
-      pigArray.push(puncCap(pigged));
+  	if (word.match(/\b[aeiou]/i)){
+      word = word.concat("way");
+      pigArray.push(puncCap(word));
     } else {
-      let pigged = consonant(word);
-      pigArray.push(puncCap(pigged));
+      word = consonant(word);
+      pigArray.push(puncCap(word));
     }
   });
   return pigArray.join(" ");
@@ -91,29 +101,3 @@ $(document).ready(function() {
     $("#piggyWords").append(pigLatin(input));
   });
 });
-
-
-
-/*
-//2.RegEx Business Logic
-
-//Taking a break from this. Not working yet. Below is the closest I got. It successfully identifies words that start with vowels...not sure how to cause that to append something to the end...
-
-pigString = vowelString.replace(/\b[aeiou]/gi, "XXX");
-
-
-//This doesn't work either, but feels maybe closer? After I get this first bit working I could add additional () statements, and p2, p3 actions.
-
-//Reference
-// https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/replace
-// https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_Expressions/Cheatsheet
-// https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_Expressions 
-
-
-function piggify(p1){
-  return [p1].concat('way');
-}
-
-newString = 'Always horrible you know, everyone is out to get ultimate power!'.replace(/(\b[aeiou])/gi, piggify);
-
-*/

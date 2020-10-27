@@ -73,11 +73,11 @@ function pigLatin(input) {
       word = word.substring(1);
     }
   	if (vowel.includes(word.slice(0,1))){
-      let pigged = word.concat("way");
-      pigArray.push(puncCap(pigged));
+      word = word.concat("way");
+      pigArray.push(puncCap(word));
     } else {
-      let pigged = consonant(word);
-      pigArray.push(puncCap(pigged));
+      word = consonant(word);
+      pigArray.push(puncCap(word));
     }
   });
   return pigArray.join(" ");
