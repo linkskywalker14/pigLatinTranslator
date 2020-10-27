@@ -18,6 +18,10 @@ let quote = false;
 
 function consonant(word){
   let reorder = word.split("");
+  if (sometimes.includes(reorder[0])){
+    let x = reorder.shift();
+    reorder.push(x);
+  }
   for (i = 0; i < reorder.length; i+=1) {
     if (sometimes.includes(reorder[0])) {
       reorder.push("ay");
@@ -27,7 +31,7 @@ function consonant(word){
       reorder.shift();
       reorder.push("qu");
     } else {
-      const x = reorder.shift();
+      let x = reorder.shift();
       reorder.push(x);
     }
   }
@@ -44,7 +48,7 @@ function puncCap(word){
     if (symbols.includes(reorder[i])){
       reorder.push(reorder[i]);
       delete reorder[i];
-    } else if (reorder[i] === reorder[i].toUpperCase()){
+    } else if (reorder[i] === reorder[i].toUpperCase() && reorder[i] !== "\'"){
       reorder[i] = reorder[i].toLowerCase();
       reorder[0] = reorder[0].toUpperCase();
     } 

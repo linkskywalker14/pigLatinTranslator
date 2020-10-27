@@ -69,7 +69,7 @@ function pigLatin(input) {
       quote = true;
       word = word.substring(1);
     }
-  	if (vowel.includes(word.slice(0,1))){
+  	if (word.match(/\b[aeiou]/gi)){
       let pigged = word.concat("way");
       pigArray.push(puncCap(pigged));
     } else {
@@ -91,6 +91,7 @@ $(document).ready(function() {
     $("#piggyWords").append(pigLatin(input));
   });
 });
+
 
 
 /*
