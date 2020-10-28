@@ -9,41 +9,17 @@
 
 //1.Global Variables
 
-const vowel = ["A", "E", "I", "O", "U", "a", "e", "i", "o", "u"];
-const sometimes = ["A", "E", "I", "O", "U","Y", "a", "e", "i", "o", "u","y"];
 const symbols = [".", ",", "!", "?", ":", ";", "\""]
 let quote = false;
 
 //2.Consonant Function
-//Takes words that begin with a consonant, moves the first syllables to the end, and adds "ay."
+//Separates a word into two substrings, $1 and $2, then reorders them as $2 + $1 + "ay"
+//$1 starts at the beginning of the word, and selects either all characters up to a qu |or| all characters before the first A,E,I,O, or U.
+//$2 starts at the first A, E, I, O, U, or Y, and continues on to the end of the word.
 
 function consonant(word) {
-	return word.replace(/\b([^aeiou]+)([aeiou].*)$/i, "$2$1ay");
+  return word.replace(/\b(.*(?<=q)u|[^aeiou]+)([aeiouy].*)$/i, "$2$1ay");
 }
-
-/*
-THE ABOVE STILL NEEDS TO CONSIDER Y and QU
-
-function consonant(word){
-
-  let reorder = word.split("");
-  if (sometimes.includes(reorder[0])){
-    let x = reorder.shift();
-    reorder.push(x);
-  }
-  for (i = 0; i < reorder.length; i+=1) {
-    if (sometimes.includes(reorder[0])) {
-      reorder.push("ay");
-      break;
-    } else if (reorder[0].toLowerCase() === "q" && reorder[1].toLowerCase() === "u") {
-      reorder.shift();
-      reorder.shift();
-      reorder.push("qu");
-    }
-  }
-  return reorder.join("");
-
-}  */
 
 //3.PuncCap Function
 //Moves end-of-word punctuation where it belongs after all letter shuffling is complete, and checks to see if the word was capitalized, then re-capitalizes the new first letter.
