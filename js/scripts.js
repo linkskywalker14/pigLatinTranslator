@@ -27,9 +27,9 @@ function consonant(word){
       reorder.push("ay");
       break;
     } else if (reorder[0].toLowerCase() === "q" && reorder[1].toLowerCase() === "u") {
+      reorder.push(reorder[0], reorder[1]);
       reorder.shift();
       reorder.shift();
-      reorder.push("qu");
     } else {
       let x = reorder.shift();
       reorder.push(x);
